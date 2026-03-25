@@ -1,0 +1,33 @@
+appId: com.niebieskieaparaty.imageuploader
+productName: "Image Uploader"
+copyright: "Copyright 2025 Niebieskie Aparaty"
+
+directories:
+  output: release
+  buildResources: resources
+
+files:
+  - "dist/**/*"
+  - "node_modules/**/*"
+  - "package.json"
+
+mac:
+  category: public.app-category.photography
+  icon: resources/icon.icns
+  target:
+    - target: dmg
+      arch:
+        - arm64
+  hardenedRuntime: true
+  gatekeeperAssess: false
+
+dmg:
+  title: "Image Uploader"
+  iconSize: 80
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications

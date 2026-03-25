@@ -1,0 +1,41 @@
+{
+  "name": "niebieskie-aparaty-image-uploader",
+  "version": "1.0.0",
+  "description": "Image Uploader for Niebieskie Aparaty",
+  "author": "Piotr Migaj",
+  "private": true,
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "npm run build:main && concurrently \"npm run dev:main\" \"npm run dev:renderer\" \"wait-on tcp:5173 && electron .\"",
+    "dev:main": "tsc -p tsconfig.main.json --watch",
+    "dev:renderer": "vite dev --config vite.config.ts",
+    "start": "npm run build && electron .",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build --config vite.config.ts",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "electron": "electron ."
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.731.1",
+    "@aws-sdk/client-s3": "^3.731.1",
+    "@aws-sdk/s3-request-presigner": "^3.731.1",
+    "@aws-sdk/util-dynamodb": "^3.731.1",
+    "dotenv": "^16.4.7",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "concurrently": "^9.1.2",
+    "electron": "^33.4.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "wait-on": "^8.0.1"
+  }
+}
