@@ -11,6 +11,10 @@ files:
   - "node_modules/**/*"
   - "package.json"
 
+extraResources:
+  - from: ".env"
+    to: ".env"
+
 mac:
   category: public.app-category.photography
   icon: resources/icon.icns
@@ -20,6 +24,12 @@ mac:
         - arm64
   hardenedRuntime: true
   gatekeeperAssess: false
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
 
 dmg:
   title: "Image Uploader"

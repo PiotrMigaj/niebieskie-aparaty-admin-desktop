@@ -11,7 +11,7 @@ function loadEnv(): void {
   ];
   const envPath = isDev
     ? devPaths.find(fs.existsSync) ?? devPaths[0]
-    : path.join(app.getPath('userData'), '.env');
+    : path.join(process.resourcesPath, '.env');
 
   if (fs.existsSync(envPath)) {
     const envContent = fs.readFileSync(envPath, 'utf-8');
